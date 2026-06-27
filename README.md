@@ -2,7 +2,8 @@ contract address :
 <img width="1883" height="881" alt="image" src="https://github.com/user-attachments/assets/8d96b807-8877-42b8-9b45-9bc0f4f5987e" />
 
 UI Screenshot :
-<img width="1254" height="708" alt="image" src="https://github.com/user-attachments/assets/41b694ff-c54b-4959-80d6-74d6027368b7" />
+<img width="1895" height="901" alt="image" src="https://github.com/user-attachments/assets/79e73460-b285-46a7-b9d3-139dd0abd2b0" />
+
 
 CI/CD pipeline badge : <img width="1862" height="630" alt="image" src="https://github.com/user-attachments/assets/cad7c3b9-a072-435a-b7f2-a6538275aee5" />
 
