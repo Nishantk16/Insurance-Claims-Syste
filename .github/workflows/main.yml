@@ -79,7 +79,7 @@ jobs:
         working-directory: ./contract
         run: |
           stellar contract deploy \
-            --wasm target/wasm32-unknown-unknown/release/contract.wasm \
+            --wasm target/wasm32v1-none/release/contract.wasm \
             --source-account alice \
             --network testnet
       - name: Install Vercel CLI
