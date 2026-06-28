@@ -55,7 +55,7 @@ jobs:
         with:
           node-version: '20'
       - name: Install Stellar CLI
-        run: cargo install --locked stellar-cli --features opt
+        run: cargo install --locked stellar-cli
       - name: Configure Stellar Network
         run: |
           stellar network add testnet \
