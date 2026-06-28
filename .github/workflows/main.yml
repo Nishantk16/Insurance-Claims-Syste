@@ -51,6 +51,11 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: wasm32-unknown-unknown
+          override: true
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
@@ -59,6 +64,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libdbus-1-dev pkg-config libudev-dev
           cargo install --locked stellar-cli
+      - name: Build Contract
+        run: |
+          cargo build --target wasm32-unknown-unknown --release --manifest-path contract/Cargo.toml
+          cp contract/target/wasm32-unknown-unknown/release/*.wasm contract/target/wasm32-unknown-unknown/release/contract.optimized.wasm
       - name: Configure Stellar Network
         run: |
           stellar network add testnet \
