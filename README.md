@@ -1,4 +1,4 @@
-contract address :
+﻿contract address :
 <img width="1883" height="881" alt="image" src="https://github.com/user-attachments/assets/8d96b807-8877-42b8-9b45-9bc0f4f5987e" />
 
 UI Screenshot :
@@ -20,19 +20,19 @@ Live Demo Link : https://insurance-claims-syste-git-main-nishant-kumar-s-project
 
 
 
-# 🛡️ ClaimChain — Decentralized Insurance Claims System
+# ðŸ›¡ï¸ ClaimChain â€” Decentralized Insurance Claims System
 
-## 📌 Project Description  
-Traditional insurance is plagued by centralized gatekeepers — adjusters, administrators, and executives who decide whether your claim gets paid, and when. ClaimChain eliminates all of that.  
+## ðŸ“Œ Project Description  
+Traditional insurance is plagued by centralized gatekeepers â€” adjusters, administrators, and executives who decide whether your claim gets paid, and when. ClaimChain eliminates all of that.  
 
-Built on *Stellar Soroban*, ClaimChain is a decentralized application (DApp) where insurance claims are filed, reviewed, and paid out entirely on-chain through community consensus. There is no owner, no admin role, and no privileged address — the smart contract is permissionless by design.  
+Built on *Stellar Soroban*, ClaimChain is a decentralized application (DApp) where insurance claims are filed, reviewed, and paid out entirely on-chain through community consensus. There is no owner, no admin role, and no privileged address â€” the smart contract is permissionless by design.  
 
-Claimants stake a small amount of XLM when filing, which deters spam. The broader community votes on claim validity. Once voting ends, anyone can trigger resolution and payout — the contract enforces the outcome automatically.  
+Claimants stake a small amount of XLM when filing, which deters spam. The broader community votes on claim validity. Once voting ends, anyone can trigger resolution and payout â€” the contract enforces the outcome automatically.  
 
 ---
 
-## ⚙️ What It Does  
-- Fund the insurance pool — anyone can contribute XLM  
+## âš™ï¸ What It Does  
+- Fund the insurance pool â€” anyone can contribute XLM  
 - File a claim with title, description, evidence URI, and amount  
 - Vote on claims (approve/reject) during a 3-day window  
 - Resolve claims once voting ends and quorum is met  
@@ -41,23 +41,23 @@ Claimants stake a small amount of XLM when filing, which deters spam. The broade
 
 ---
 
-## ✨ Features  
+## âœ¨ Features  
 
 ### Core  
-- 🔓 Fully permissionless (no owner, no admin)  
-- 🗳️ Community voting with quorum & threshold  
-- ⚡ Trustless automatic payouts  
-- 🛡️ Stake-based spam deterrence  
-- 🎁 Voter rewards (1% of claim)  
-- 📎 Evidence via IPFS/URLs  
-- 🌐 Open funding pool  
+- ðŸ”“ Fully permissionless (no owner, no admin)  
+- ðŸ—³ï¸ Community voting with quorum & threshold  
+- âš¡ Trustless automatic payouts  
+- ðŸ›¡ï¸ Stake-based spam deterrence  
+- ðŸŽ Voter rewards (1% of claim)  
+- ðŸ“Ž Evidence via IPFS/URLs  
+- ðŸŒ Open funding pool  
 
 ### DApp Frontend  
-- 🦊 Freighter wallet integration  
-- 📊 Live on-chain data via Soroban RPC  
-- 🧾 Explorer links (Stellar Expert)  
-- 🎨 Terminal-style UI (IBM Plex Mono)  
-- 📱 Responsive design  
+- ðŸ¦Š Freighter wallet integration  
+- ðŸ“Š Live on-chain data via Soroban RPC  
+- ðŸ§¾ Explorer links (Stellar Expert)  
+- ðŸŽ¨ Terminal-style UI (IBM Plex Mono)  
+- ðŸ“± Responsive design  
 
 ### Contract Mechanics  
 - Voting Period: 3 days  
@@ -70,31 +70,31 @@ Claimants stake a small amount of XLM when filing, which deters spam. The broade
 
 ---
 
-## 🔄 How It Works  
+## ðŸ”„ How It Works  
 1. User files a claim with 0.01 XLM stake  
 2. 3-day voting window starts  
 3. Community votes approve/reject  
 4. After voting ends, anyone calls resolve_claim()  
-5. If ≥60% approve → payout executed  
-6. If <60% approve → 50% stake returned  
+5. If â‰¥60% approve â†’ payout executed  
+6. If <60% approve â†’ 50% stake returned  
 
 ---
 
-## 📜 Smart Contract  
+## ðŸ“œ Smart Contract  
  
 - *Contract Address:*  
-  CAY57LW6Q4KS3BXRNDHC37UJB6LKKA4TGJLQ3KNRG4PTBFOJ3FABBXMK  
+  CA43I2DUWKVEMKEFKNRNACVVKJYHN6SLJ6B6GACIV5SC3GUC6APWDSXN  
 
 - *Freighter Address:*  
   GD3KADPLFNCKMGLTJS2AXUU3KWSSNJH3C3MA3OC3PGOAMAYC35S5SFWQ  
 
 ---
 
-## 🛠 Tech Stack  
-- Rust · Soroban SDK  
+## ðŸ›  Tech Stack  
+- Rust Â· Soroban SDK  
 - Stellar Mainnet  
 - Soroban RPC (soroban.stellar.org)  
-- Vanilla JS · HTML · CSS  
+- Vanilla JS Â· HTML Â· CSS  
 - @stellar/stellar-sdk v12  
 - Freighter Wallet  
 - IPFS  
@@ -102,7 +102,7 @@ Claimants stake a small amount of XLM when filing, which deters spam. The broade
 
 ---
 
-## 🚀 Getting Started  
+## ðŸš€ Getting Started  
 
 ### Prerequisites  
 - Freighter wallet installed  
@@ -119,7 +119,7 @@ npx serve .
 
 ---
 
-## 📐 Contract Functions  
+## ðŸ“ Contract Functions  
 
 ### Read Functions  
 - get_all_claims()  
@@ -138,7 +138,7 @@ npx serve .
 
 ---
 
-## 🔓 Permissionless Design  
+## ðŸ”“ Permissionless Design  
 - No owner or admin roles  
 - No whitelist system  
 - Anyone can resolve claims  
@@ -150,11 +150,11 @@ npx serve .
 
 ---
 
-## 👥 User Feedback
+## ðŸ‘¥ User Feedback
 
 We are onboarding testnet users to improve ClaimChain!
 
-👉 **Fill out our feedback form:** [ClaimChain User Feedback Form](https://docs.google.com/forms/d/e/1FAIpQLSc3kZlOxoRcCHYj-njzyPynmGXaL3dFjX2ytfSwXKXQkngW1w/viewform?usp=publish-editor)
+ðŸ‘‰ **Fill out our feedback form:** [ClaimChain User Feedback Form](https://docs.google.com/forms/d/e/1FAIpQLSc3kZlOxoRcCHYj-njzyPynmGXaL3dFjX2ytfSwXKXQkngW1w/viewform?usp=publish-editor)
 
 ### How to test ClaimChain:
 1. Visit [insurance-claims-syste.vercel.app](https://insurance-claims-syste.vercel.app)
