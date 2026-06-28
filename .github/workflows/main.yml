@@ -65,9 +65,8 @@ jobs:
           sudo apt-get install -y libdbus-1-dev pkg-config libudev-dev
           cargo install --locked stellar-cli
       - name: Build Contract
-        run: |
-          cargo build --target wasm32-unknown-unknown --release --manifest-path contract/Cargo.toml
-          cp contract/target/wasm32-unknown-unknown/release/*.wasm contract/target/wasm32-unknown-unknown/release/contract.optimized.wasm
+        working-directory: ./contract
+        run: stellar contract build
       - name: Configure Stellar Network
         run: |
           stellar network add testnet \
@@ -75,9 +74,10 @@ jobs:
             --network-passphrase "Test SDF Network ; September 2015"
           stellar keys generate alice --network testnet --fund
       - name: Deploy Contract to Testnet
+        working-directory: ./contract
         run: |
           stellar contract deploy \
-            --wasm contract/target/wasm32-unknown-unknown/release/contract.optimized.wasm \
+            --wasm target/wasm32-unknown-unknown/release/contract.wasm \
             --source-account alice \
             --network testnet
       - name: Install Vercel CLI
