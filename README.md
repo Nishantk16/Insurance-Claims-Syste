@@ -84,6 +84,17 @@ Claimants stake a small amount of XLM when filing, which deters spam. The broade
 - [Cargo.lock](https://github.com/Nishantk16/Insurance-Claims-Syste/blob/main/contract/Cargo.lock)
 - [contract.ts (Frontend Integration)](https://github.com/Nishantk16/Insurance-Claims-Syste/blob/main/client/hooks/contract.ts)
 
+- ### contract.ts Key Code
+```typescript
+import { Contract, Networks, TransactionBuilder, rpc } from "@stellar/stellar-sdk";
+
+export const CONTRACT_ADDRESS = "CA43I2DUWKVEMKEFKNRNACVVKJYHN6SLJ6B6GACIV5SC3GUC6APWDSXN";
+export const NETWORK_PASSPHRASE = Networks.TESTNET;
+export const RPC_URL = "https://soroban-testnet.stellar.org";
+
+// Functions: fileClaim, vote, resolveClaim, getClaim, getVoteStats
+```
+
 ## 🛠️ Tech Stack
 - Rust, Soroban SDK
 - Stellar Testnet
