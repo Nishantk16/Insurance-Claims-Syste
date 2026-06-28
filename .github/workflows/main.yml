@@ -55,7 +55,10 @@ jobs:
         with:
           node-version: '20'
       - name: Install Stellar CLI
-        run: cargo install --locked stellar-cli
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libdbus-1-dev pkg-config
+          cargo install --locked stellar-cli
       - name: Configure Stellar Network
         run: |
           stellar network add testnet \
