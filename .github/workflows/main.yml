@@ -54,6 +54,20 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
+      - name: Install Stellar CLI
+        run: cargo install --locked stellar-cli --features opt
+      - name: Configure Stellar Network
+        run: |
+          stellar network add testnet \
+            --rpc-url https://soroban-testnet.stellar.org \
+            --network-passphrase "Test SDF Network ; September 2015"
+          stellar keys generate alice --network testnet --fund
+      - name: Deploy Contract to Testnet
+        run: |
+          stellar contract deploy \
+            --wasm contract/target/wasm32-unknown-unknown/release/contract.optimized.wasm \
+            --source-account alice \
+            --network testnet
       - name: Install Vercel CLI
         run: npm install -g vercel
       - name: Deploy to Vercel
