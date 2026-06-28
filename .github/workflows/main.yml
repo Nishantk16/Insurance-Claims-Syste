@@ -75,6 +75,8 @@ jobs:
             --rpc-url https://soroban-testnet.stellar.org \
             --network-passphrase "Test SDF Network ; September 2015"
           stellar keys generate alice --network testnet --fund
+          echo "Waiting for account to be available..."
+          sleep 15
       - name: Deploy Contract to Testnet
         working-directory: ./contract
         run: |
