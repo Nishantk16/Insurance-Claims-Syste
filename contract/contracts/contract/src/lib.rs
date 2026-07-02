@@ -87,8 +87,16 @@ impl Contract {
             .get(&DataKey::Claim(claim_id))
             .expect("claim not found");
 
-        assert_eq!(claim.claimant, claimant, "only claimant can submit evidence");
-        assert_eq!(claim.status, ClaimStatus::Filed, "evidence only allowed before voting");
+        assert_eq!(
+            claim.claimant,
+            claimant,
+            "only claimant can submit evidence"
+        );
+        assert_eq!(
+            claim.status,
+            ClaimStatus::Filed,
+            "evidence only allowed before voting"
+        );
 
         claim.evidence.push_back(evidence);
         env.storage()
@@ -105,7 +113,11 @@ impl Contract {
             .get(&DataKey::Claim(claim_id))
             .expect("claim not found");
 
-        assert_eq!(claim.status, ClaimStatus::Filed, "voting already started or claim resolved");
+        assert_eq!(
+            claim.status,
+            ClaimStatus::Filed,
+            "voting already started or claim resolved"
+        );
 
         claim.status = ClaimStatus::UnderReview;
         claim.voting_started_at = env.ledger().timestamp();
@@ -131,7 +143,11 @@ impl Contract {
             .get(&DataKey::Claim(claim_id))
             .expect("claim not found");
 
-        assert_eq!(claim.status, ClaimStatus::UnderReview, "voting not active");
+        assert_eq!(
+            claim.status,
+            ClaimStatus::UnderReview,
+            "voting not active"
+        );
 
         claim.approvals += if approve { 1 } else { 0 };
         claim.rejections += if !approve { 1 } else { 0 };
@@ -163,7 +179,11 @@ impl Contract {
             .get(&DataKey::Claim(claim_id))
             .expect("claim not found");
 
-        assert_eq!(claim.status, ClaimStatus::UnderReview, "claim not under review");
+        assert_eq!(
+            claim.status,
+            ClaimStatus::UnderReview,
+            "claim not under review"
+        );
 
         claim.status = if claim.approvals > claim.rejections {
             ClaimStatus::Approved
