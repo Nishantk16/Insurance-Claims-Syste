@@ -339,5 +339,15 @@ export async function getClaim(claimId: bigint, caller?: string) {
 export async function getVoteStats(claimId: bigint, caller?: string) {
   return readContract("get_vote_stats", [toScValU64(claimId)], caller);
 }
-
+export async function getClaimCounter(caller?: string): Promise<number> {
+  const account = caller || "GDWO4KXFTNDYH7PSCOXGBNNZVB4F65JIEZKYXHOHX7KLUPE5DIFVSAOD";
+  const sim = await callContract("get_claim_counter", [], account, false);
+  if (
+    rpc.Api.isSimulationSuccess(sim as rpc.Api.SimulateTransactionResponse) &&
+    (sim as rpc.Api.SimulateTransactionSuccessResponse).result
+  ) {
+    return Number(scValToNative((sim as rpc.Api.SimulateTransactionSuccessResponse).result!.retval));
+  }
+  return 0;
+}
 export { nativeToScVal, scValToNative, Address, xdr };
