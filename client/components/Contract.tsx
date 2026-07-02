@@ -303,12 +303,12 @@ export default function ContractUI({ walletAddress, onConnect, isConnecting }: C
     try {
       const fullDesc = `[${category}] ${desc.trim()}`;
       const result = await fileClaim(walletAddress, fullDesc, BigInt(Math.round(amountNum * 1_000_000)));
-      setTxStatus("Claim filed on-chain!");
+      const newClaimId = (lastClaimId ?? 0) + 1;
+      setTxStatus(`✅ Claim filed! Your Claim ID: #${newClaimId} — Save this ID to track your claim later!`);
       setDesc("");
       setAmount("");
       setCategory("");
-      setLastClaimId((prev) => (prev ?? 0) + 1);
-      setTimeout(() => setTxStatus(null), 5000);
+      setTimeout(() => setTxStatus(null), 10000);
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Transaction failed");
       setTxStatus(null);
