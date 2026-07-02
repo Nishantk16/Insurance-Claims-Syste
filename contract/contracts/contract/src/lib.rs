@@ -38,7 +38,6 @@ pub struct Contract;
 
 #[contractimpl]
 impl Contract {
-    // Anyone can file a claim — no permission needed
     pub fn file_claim(
         env: Env,
         claimant: Address,
@@ -79,7 +78,6 @@ impl Contract {
         claim_id
     }
 
-    // Claimant adds evidence to their own claim
     pub fn submit_evidence(env: Env, claimant: Address, claim_id: u64, evidence: String) {
         claimant.require_auth();
 
@@ -89,15 +87,8 @@ impl Contract {
             .get(&DataKey::Claim(claim_id))
             .expect("claim not found");
 
-        assert_eq!(
-            claim.claimant, claimant,
-            "only claimant can submit evidence"
-        );
-        assert_eq!(
-            claim.status,
-            ClaimStatus::Filed,
-            "evidence only allowed before voting"
-        );
+        assert_eq!(claim.claimant, claimant, "only claimant can submit evidence");
+        assert_eq!(claim.status, ClaimStatus::Filed, "evidence only allowed before voting");
 
         claim.evidence.push_back(evidence);
         env.storage()
@@ -105,7 +96,6 @@ impl Contract {
             .set(&DataKey::Claim(claim_id), &claim);
     }
 
-    // Anyone can start voting on a filed claim
     pub fn start_voting(env: Env, caller: Address, claim_id: u64) {
         caller.require_auth();
 
@@ -115,11 +105,7 @@ impl Contract {
             .get(&DataKey::Claim(claim_id))
             .expect("claim not found");
 
-        assert_eq!(
-            claim.status,
-            ClaimStatus::Filed,
-            "voting already started or claim resolved"
-        );
+        assert_eq!(claim.status, ClaimStatus::Filed, "voting already started or claim resolved");
 
         claim.status = ClaimStatus::UnderReview;
         claim.voting_started_at = env.ledger().timestamp();
@@ -128,7 +114,6 @@ impl Contract {
             .set(&DataKey::Claim(claim_id), &claim);
     }
 
-    // Any address casts a vote (approve or reject)
     pub fn vote(env: Env, voter: Address, claim_id: u64, approve: bool) {
         voter.require_auth();
 
@@ -169,7 +154,6 @@ impl Contract {
             .set(&DataKey::Voters(claim_id), &voters);
     }
 
-    // Anyone can trigger resolution — majority decides outcome
     pub fn resolve_claim(env: Env, caller: Address, claim_id: u64) {
         caller.require_auth();
 
@@ -179,11 +163,7 @@ impl Contract {
             .get(&DataKey::Claim(claim_id))
             .expect("claim not found");
 
-        assert_eq!(
-            claim.status,
-            ClaimStatus::UnderReview,
-            "claim not under review"
-        );
+        assert_eq!(claim.status, ClaimStatus::UnderReview, "claim not under review");
 
         claim.status = if claim.approvals > claim.rejections {
             ClaimStatus::Approved
@@ -196,7 +176,6 @@ impl Contract {
             .set(&DataKey::Claim(claim_id), &claim);
     }
 
-    // Read claim details
     pub fn get_claim(env: Env, claim_id: u64) -> Claim {
         env.storage()
             .persistent()
@@ -204,7 +183,6 @@ impl Contract {
             .expect("claim not found")
     }
 
-    // Read vote statistics
     pub fn get_vote_stats(env: Env, claim_id: u64) -> VoteStats {
         let claim: Claim = env
             .storage()
@@ -222,6 +200,13 @@ impl Contract {
             rejections: claim.rejections,
             total_votes: voters.len(),
         }
+    }
+
+    pub fn get_claim_counter(env: Env) -> u64 {
+        env.storage()
+            .persistent()
+            .get(&DataKey::ClaimCounter)
+            .unwrap_or(0)
     }
 }
 
