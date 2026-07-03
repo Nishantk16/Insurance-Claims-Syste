@@ -223,23 +223,23 @@ function ClaimCard({ claim, claimId, onVote, onStartVoting, onResolve, walletAdd
         <div className="flex gap-2 pt-1">
           {claim.status[0] === "Filed" && (
             <button onClick={onStartVoting} disabled={isLoading}
-              className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-[#4fc3f7]/20 bg-[#4fc3f7]/[0.05] px-3 py-2 text-xs font-medium text-[#4fc3f7]/80 hover:border-[#4fc3f7]/30 hover:text-[#4fc3f7] active:scale-[0.98] transition-all disabled:opacity-40">
+              className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-[#4fc3f7]/20 bg-[#4fc3f7]/[0.05] px-4 py-3 text-sm font-semibold text-[#4fc3f7]/80 hover:border-[#4fc3f7]/30 hover:text-[#4fc3f7] active:scale-[0.98] transition-all disabled:opacity-40">
               {isLoading ? <SpinnerIcon /> : <VoteIcon />} Start Voting
             </button>
           )}
           {claim.status[0] === "UnderReview" && onVote && (
             <>
               <button onClick={() => onVote(true)} disabled={isLoading}
-                className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-[#34d399]/20 bg-[#34d399]/[0.05] px-3 py-2 text-xs font-medium text-[#34d399]/80 hover:border-[#34d399]/30 hover:text-[#34d399] active:scale-[0.98] transition-all disabled:opacity-40">
+                className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-[#34d399]/20 bg-[#34d399]/[0.05] px-4 py-3 text-sm font-semibold text-[#34d399]/80 hover:border-[#34d399]/30 hover:text-[#34d399] active:scale-[0.98] transition-all disabled:opacity-40">
                 {isLoading ? <SpinnerIcon /> : <ThumbsUpIcon />} Approve
               </button>
               <button onClick={() => onVote(false)} disabled={isLoading}
-                className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-[#f87171]/20 bg-[#f87171]/[0.05] px-3 py-2 text-xs font-medium text-[#f87171]/80 hover:border-[#f87171]/30 hover:text-[#f87171] active:scale-[0.98] transition-all disabled:opacity-40">
+                className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-[#f87171]/20 bg-[#f87171]/[0.05] px-4 py-3 text-sm font-semibold text-[#f87171]/80 hover:border-[#f87171]/30 hover:text-[#f87171] active:scale-[0.98] transition-all disabled:opacity-40">
                 {isLoading ? <SpinnerIcon /> : <ThumbsDownIcon />} Reject
               </button>
               {onResolve && (
                 <button onClick={onResolve} disabled={isLoading}
-                  className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-[#7c6cf0]/20 bg-[#7c6cf0]/[0.05] px-3 py-2 text-xs font-medium text-[#7c6cf0]/80 hover:border-[#7c6cf0]/30 hover:text-[#7c6cf0] active:scale-[0.98] transition-all disabled:opacity-40">
+                  className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-[#7c6cf0]/20 bg-[#7c6cf0]/[0.05] px-4 py-3 text-sm font-semibold text-[#7c6cf0]/80 hover:border-[#7c6cf0]/30 hover:text-[#7c6cf0] active:scale-[0.98] transition-all disabled:opacity-40">
                   {isLoading ? <SpinnerIcon /> : <CheckCircleIcon />} Resolve
                 </button>
               )}
