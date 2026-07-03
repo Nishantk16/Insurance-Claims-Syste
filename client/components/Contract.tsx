@@ -246,6 +246,7 @@ function ClaimCard({ claim, claimId, onVote, onStartVoting, onResolve, walletAdd
             </>
           )}
         </div>
+        <p className="text-[10px] text-white/25 text-center pt-2">Estimated network fee: &lt;$0.01</p>
       </div>
     </div>
   );
