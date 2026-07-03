@@ -222,6 +222,13 @@ impl Contract {
         }
     }
 
+    pub fn has_voted(env: Env, claim_id: u64, voter: Address) -> bool {
+        env.storage()
+            .persistent()
+            .get(&DataKey::HasVoted(claim_id, voter))
+            .unwrap_or(false)
+    }
+
     pub fn get_claim_counter(env: Env) -> u64 {
         env.storage()
             .persistent()
