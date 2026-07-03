@@ -199,7 +199,7 @@ function ClaimCard({ claim, claimId, onVote, onStartVoting, onResolve, walletAdd
         </div>
         <Badge variant={statusCfg.variant}>
           <span className={cn("h-1.5 w-1.5 rounded-full", statusCfg.dot)} />
-          {claim.status}
+          {JSON.stringify(claim.status)}
         </Badge>
       </div>
       <div className="p-4 space-y-3">
