@@ -220,7 +220,7 @@ function ClaimCard({ claim, claimId, onVote, onStartVoting, onResolve, walletAdd
             </div>
           </div>
         )}
-        <div <div className="flex gap-2 pt-1">
+        <div className="flex gap-2 pt-1">
           {claim.status[0] === "Filed" && (
             <button onClick={onStartVoting} disabled={isLoading}
               className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-[#4fc3f7]/20 bg-[#4fc3f7]/[0.05] px-4 py-3 text-sm font-semibold text-[#4fc3f7]/80">
@@ -245,9 +245,6 @@ function ClaimCard({ claim, claimId, onVote, onStartVoting, onResolve, walletAdd
               )}
             </>
           )}
-              )}
-            </>
-          )}
         </div>
         <p className="text-[10px] text-white/25 text-center pt-2">Estimated network fee: &lt;$0.01</p>
       </div>
@@ -268,19 +265,16 @@ export default function ContractUI({ walletAddress, onConnect, isConnecting }: C
   const [error, setError] = useState<string | null>(null);
   const [txStatus, setTxStatus] = useState<string | null>(null);
 
-  // File claim state
   const [category, setCategory] = useState("");
   const [desc, setDesc] = useState("");
   const [amount, setAmount] = useState("");
   const [isFiling, setIsFiling] = useState(false);
   const [lastClaimId, setLastClaimId] = useState<number | null>(null);
 
-  // Evidence state
   const [evidenceClaimId, setEvidenceClaimId] = useState("");
   const [evidenceText, setEvidenceText] = useState("");
   const [isAddingEvidence, setIsAddingEvidence] = useState(false);
 
-  // Browse state
   const [browseId, setBrowseId] = useState("");
   const [isBrowsing, setIsBrowsing] = useState(false);
   const [browseClaim, setBrowseClaim] = useState<{ id: number; data: ClaimData } | null>(null);
@@ -288,7 +282,6 @@ export default function ContractUI({ walletAddress, onConnect, isConnecting }: C
   const [isResolving, setIsResolving] = useState(false);
   const [isStartingVoting, setIsStartingVoting] = useState(false);
 
-  // My claims state
   const [myClaims, setMyClaims] = useState<{ id: number; data: ClaimData }[]>([]);
   const [isLoadingMyClaims, setIsLoadingMyClaims] = useState(false);
   const [searchMyClaims, setSearchMyClaims] = useState("");
@@ -514,7 +507,6 @@ export default function ContractUI({ walletAddress, onConnect, isConnecting }: C
                   <span className="text-white/20 text-xs">(claimant, description, amount)</span>
                 </div>
 
-                {/* Category Dropdown */}
                 <div className="space-y-2">
                   <label className="block text-[11px] font-medium uppercase tracking-wider text-white/30">
                     Claim Category
