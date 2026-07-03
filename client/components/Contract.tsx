@@ -186,7 +186,7 @@ function ClaimCard({ claim, claimId, onVote, onStartVoting, onResolve, walletAdd
   claim: ClaimData; claimId: number; onVote?: (approve: boolean) => void;
   onStartVoting?: () => void; onResolve?: () => void; walletAddress: string | null; isLoading?: boolean;
 }) {
-  const statusCfg = STATUS_CONFIG[claim.status] ?? STATUS_CONFIG["Filed"];
+  const statusCfg = STATUS_CONFIG[claim.status[0]] ?? STATUS_CONFIG["Filed"];
   const truncate = (addr: string) => `${addr.slice(0, 4)}...${addr.slice(-4)}`;
   const formatAmount = (amount: bigint) => (Number(amount) / 1_000_000).toFixed(2);
 
@@ -199,7 +199,7 @@ function ClaimCard({ claim, claimId, onVote, onStartVoting, onResolve, walletAdd
         </div>
         <Badge variant={statusCfg.variant}>
           <span className={cn("h-1.5 w-1.5 rounded-full", statusCfg.dot)} />
-          {JSON.stringify(claim.status)}
+          {claim.status[0]}
         </Badge>
       </div>
       <div className="p-4 space-y-3">
@@ -221,13 +221,13 @@ function ClaimCard({ claim, claimId, onVote, onStartVoting, onResolve, walletAdd
           </div>
         )}
         <div className="flex gap-2 pt-1">
-          {claim.status === "Filed" && (
+          {claim.status[0] === "Filed" && (
             <button onClick={onStartVoting} disabled={isLoading}
               className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-[#4fc3f7]/20 bg-[#4fc3f7]/[0.05] px-3 py-2 text-xs font-medium text-[#4fc3f7]/80 hover:border-[#4fc3f7]/30 hover:text-[#4fc3f7] active:scale-[0.98] transition-all disabled:opacity-40">
               {isLoading ? <SpinnerIcon /> : <VoteIcon />} Start Voting
             </button>
           )}
-          {claim.status === "UnderReview" && onVote && (
+          {claim.status[0] === "UnderReview" && onVote && (
             <>
               <button onClick={() => onVote(true)} disabled={isLoading}
                 className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-[#34d399]/20 bg-[#34d399]/[0.05] px-3 py-2 text-xs font-medium text-[#34d399]/80 hover:border-[#34d399]/30 hover:text-[#34d399] active:scale-[0.98] transition-all disabled:opacity-40">
