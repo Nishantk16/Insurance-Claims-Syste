@@ -187,7 +187,7 @@ export default function Navbar({ walletAddress, onConnect, onDisconnect, isConne
               <h2 className="text-base font-semibold text-white">Connect a Wallet</h2>
               <button onClick={() => setShowWalletModal(false)} className="text-white/40 hover:text-white/80 transition-colors">✕</button>
             </div>
-            <div className="p-3 space-y-1">
+            <div className="px-5 pt-3 pb-1"><p className="text-xs text-white/40 leading-relaxed">New here? We recommend <span className="text-[#4fc3f7]">Freighter</span> — install the free extension, then select it below. <a href="https://freighter.app" target="_blank" rel="noopener noreferrer" className="text-[#7c6cf0] hover:underline">Get Freighter →</a></p></div><div className="p-3 space-y-1">
               {walletOptions.map((wallet) => (
                 <button key={wallet.id} onClick={() => handleWalletSelect(wallet.id)} className="flex w-full items-center gap-3 rounded-xl px-4 py-3 hover:bg-white/[0.06] transition-colors text-left">
                   <div className="h-9 w-9 rounded-xl bg-white/[0.06] flex items-center justify-center">
