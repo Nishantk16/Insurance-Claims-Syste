@@ -231,23 +231,23 @@ function ClaimCard({ claim, claimId, onVote, onStartVoting, onResolve, walletAdd
         <div className="flex gap-2 pt-1">
           {claim.status[0] === "Filed" && (
             <button onClick={onStartVoting} disabled={isLoading}
-              className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-[#4fc3f7]/20 bg-[#4fc3f7]/[0.05] px-4 py-3 text-sm font-semibold text-[#4fc3f7]/80">
+              className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-[#4fc3f7]/20 bg-[#4fc3f7]/[0.05] px-5 py-4 text-base font-semibold text-[#4fc3f7]/80">
               {isLoading ? <SpinnerIcon /> : <VoteIcon />} {isLoading ? "Confirming on blockchain..." : "Start Voting"}
             </button>
           )}
           {claim.status[0] === "UnderReview" && onVote && (
             <>
               <button onClick={() => onVote(true)} disabled={isLoading}
-                className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-[#34d399]/20 bg-[#34d399]/[0.05] px-4 py-3 text-sm font-semibold text-[#34d399]/80">
+                className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-[#34d399]/20 bg-[#34d399]/[0.05] px-5 py-4 text-base font-semibold text-[#34d399]/80">
                 {isLoading ? <SpinnerIcon /> : <ThumbsUpIcon />} {isLoading ? "Confirming..." : "Approve"}
               </button>
               <button onClick={() => onVote(false)} disabled={isLoading}
-                className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-[#f87171]/20 bg-[#f87171]/[0.05] px-4 py-3 text-sm font-semibold text-[#f87171]/80">
+                className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-[#f87171]/20 bg-[#f87171]/[0.05] px-5 py-4 text-base font-semibold text-[#f87171]/80">
                 {isLoading ? <SpinnerIcon /> : <ThumbsDownIcon />} {isLoading ? "Confirming..." : "Reject"}
               </button>
               {onResolve && (
                 <button onClick={onResolve} disabled={isLoading}
-                  className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-[#7c6cf0]/20 bg-[#7c6cf0]/[0.05] px-4 py-3 text-sm font-semibold text-[#7c6cf0]/80">
+                  className="flex-1 flex items-center justify-center gap-2 rounded-lg border border-[#7c6cf0]/20 bg-[#7c6cf0]/[0.05] px-5 py-4 text-base font-semibold text-[#7c6cf0]/80">
                   {isLoading ? <SpinnerIcon /> : <CheckCircleIcon />} {isLoading ? "Confirming..." : "Resolve"}
                 </button>
               )}
