@@ -189,6 +189,10 @@ function ClaimCard({ claim, claimId, onVote, onStartVoting, onResolve, walletAdd
   const statusCfg = STATUS_CONFIG[claim.status[0] as ClaimStatusStr] ?? STATUS_CONFIG["Filed"];
   const truncate = (addr: string) => `${addr.slice(0, 4)}...${addr.slice(-4)}`;
   const formatAmount = (amount: bigint) => (Number(amount) / 1_000_000).toFixed(2);
+  const handleCopyDetails = () => {
+    const text = `Claim #${claimId}\nStatus: ${claim.status[0]}\nDescription: ${claim.description}\nClaimant: ${claim.claimant}\nCoverage: ${formatAmount(claim.coverage_amount)} XLM\nApprovals: ${claim.approvals} | Rejections: ${claim.rejections}`;
+    navigator.clipboard.writeText(text);
+  };
 
   return (
     <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] overflow-hidden animate-fade-in-up">
@@ -197,6 +201,9 @@ function ClaimCard({ claim, claimId, onVote, onStartVoting, onResolve, walletAdd
           <span className="font-mono text-xs text-white/40">Claim</span>
           <span className="font-mono text-sm font-semibold text-white/70">#{claimId}</span>
         </div>
+        <button onClick={handleCopyDetails} title="Copy claim details" className="text-white/25 hover:text-white/60 transition-colors">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          </button>
         <Badge variant={statusCfg.variant}>
           <span className={cn("h-1.5 w-1.5 rounded-full", statusCfg.dot)} />
           {claim.status[0]}
