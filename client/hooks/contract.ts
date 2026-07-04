@@ -161,7 +161,9 @@ export async function callContract(
   if (getResult.status === "FAILED") {
     throw new Error("Transaction failed on chain.");
   }
-
+  if (getResult.status === "SUCCESS" && (getResult as any).returnValue) {
+    return scValToNative((getResult as any).returnValue);
+  }
   return getResult;
 }
 
