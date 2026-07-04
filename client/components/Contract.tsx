@@ -20,6 +20,7 @@ import { Spotlight } from "@/components/ui/spotlight";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import toast from "react-hot-toast";
 
 function SpinnerIcon() {
   return (
@@ -285,6 +286,7 @@ export default function ContractUI({ walletAddress, onConnect, isConnecting }: C
   const [browseId, setBrowseId] = useState("");
   const [isBrowsing, setIsBrowsing] = useState(false);
   const [browseClaim, setBrowseClaim] = useState<{ id: number; data: ClaimData } | null>(null);
+  const [lastKnownStatus, setLastKnownStatus] = useState<string | null>(null);
   const [isVoting, setIsVoting] = useState(false);
   const [isResolving, setIsResolving] = useState(false);
   const [isStartingVoting, setIsStartingVoting] = useState(false);
@@ -443,6 +445,28 @@ export default function ContractUI({ walletAddress, onConnect, isConnecting }: C
       setIsLoadingMyClaims(false);
     }
   }, [searchMyClaims]);
+  useEffect(() => {
+  if (!browseClaim) return;
+  setLastKnownStatus(browseClaim.data.status[0]);
+
+  const interval = setInterval(async () => {
+    try {
+      const result = await getClaim(BigInt(browseClaim.id));
+      if (result && typeof result === "object") {
+        const newStatus = (result as ClaimData).status[0];
+        if (newStatus !== lastKnownStatus) {
+          toast.success(`Claim #${browseClaim.id} status updated: ${newStatus}`);
+          setLastKnownStatus(newStatus);
+          setBrowseClaim({ id: browseClaim.id, data: result as ClaimData });
+        }
+      }
+    } catch {
+      // silent fail, retry next interval
+    }
+  }, 15000);
+
+  return () => clearInterval(interval);
+}, [browseClaim?.id, lastKnownStatus]);
 
   const tabs: { key: Tab; label: string; icon: React.ReactNode; color: string }[] = [
     { key: "file", label: "File Claim", icon: <PlusIcon />, color: "#7c6cf0" },
