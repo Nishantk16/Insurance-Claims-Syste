@@ -21,7 +21,37 @@ import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import toast from "react-hot-toast";
-
+function getFriendlyError(err: unknown): string {
+  const raw = err instanceof Error ? err.message : String(err);
+  if (raw.includes("already voted")) {
+    return "You have already voted on this claim.";
+  }
+  if (raw.includes("cannot vote on their own claim") || (raw.includes("UnreachableCodeReached") && raw.includes("vote"))) {
+    return "You cannot vote on your own claim.";
+  }
+  if (raw.includes("only claimant can submit evidence")) {
+    return "Only the person who filed this claim can submit evidence.";
+  }
+  if (raw.includes("evidence only allowed before voting")) {
+    return "Evidence can only be added before voting starts.";
+  }
+  if (raw.includes("voting already started") || raw.includes("claim resolved")) {
+    return "Voting has already started or this claim is already resolved.";
+  }
+  if (raw.includes("voting not active")) {
+    return "Voting is not currently active for this claim.";
+  }
+  if (raw.includes("claim not under review")) {
+    return "This claim is not under review right now.";
+  }
+  if (raw.includes("claim not found")) {
+    return "Claim not found. Please check the Claim ID.";
+  }
+  if (raw.toLowerCase().includes("user declined") || raw.toLowerCase().includes("rejected")) {
+    return "Transaction was cancelled.";
+  }
+  return "Something went wrong. Please try again.";
+}
 function SpinnerIcon() {
   return (
     <svg className="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -331,7 +361,7 @@ export default function ContractUI({ walletAddress, onConnect, isConnecting }: C
       setCategory("");
       setTimeout(() => setTxStatus(null), 10000);
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Transaction failed");
+      setError(getFriendlyError(err));
       setTxStatus(null);
     } finally {
       setIsFiling(false);
@@ -353,7 +383,7 @@ export default function ContractUI({ walletAddress, onConnect, isConnecting }: C
       setEvidenceText("");
       setTimeout(() => setTxStatus(null), 5000);
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Transaction failed");
+      setError(getFriendlyError(err));
       setTxStatus(null);
     } finally {
       setIsAddingEvidence(false);
@@ -391,7 +421,7 @@ export default function ContractUI({ walletAddress, onConnect, isConnecting }: C
       if (result) setBrowseClaim({ id: browseClaim.id, data: result as ClaimData });
       setTimeout(() => setTxStatus(null), 5000);
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Transaction failed");
+      setError(getFriendlyError(err));
       setTxStatus(null);
     } finally {
       setIsVoting(false);
@@ -410,7 +440,7 @@ export default function ContractUI({ walletAddress, onConnect, isConnecting }: C
       if (result) setBrowseClaim({ id: browseClaim.id, data: result as ClaimData });
       setTimeout(() => setTxStatus(null), 5000);
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Transaction failed");
+      setError(getFriendlyError(err));
       setTxStatus(null);
     } finally {
       setIsStartingVoting(false);
@@ -429,7 +459,7 @@ export default function ContractUI({ walletAddress, onConnect, isConnecting }: C
       if (result) setBrowseClaim({ id: browseClaim.id, data: result as ClaimData });
       setTimeout(() => setTxStatus(null), 5000);
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Transaction failed");
+      setError(getFriendlyError(err));
       setTxStatus(null);
     } finally {
       setIsResolving(false);
