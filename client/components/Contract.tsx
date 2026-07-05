@@ -187,7 +187,7 @@ function ClaimCard({ claim, claimId, onVote, onStartVoting, onResolve, walletAdd
   claim: ClaimData; claimId: number; onVote?: (approve: boolean) => void;
   onStartVoting?: () => void; onResolve?: () => void; walletAddress: string | null; isLoading?: boolean;
 }) {
-  const statusCfg = STATUS_CONFIG[claim.status[0] as ClaimStatusStr] ?? STATUS_CONFIG["Filed"];
+  const currentStatus = claim.status?.[0] ?? "Filed";   const statusCfg = STATUS_CONFIG[currentStatus as ClaimStatusStr] ?? STATUS_CONFIG["Filed"];
   const truncate = (addr: string) => `${addr.slice(0, 4)}...${addr.slice(-4)}`;
   const formatAmount = (amount: bigint) => (Number(amount) / 1_000_000).toFixed(2);
   const handleCopyDetails = () => {
