@@ -73,7 +73,7 @@ Claimants stake a small amount of XLM when filing, which deters spam. The broade
 6. If less than 60% approve, 50% stake returned
 
 ## 📜 Smart Contract
-- **Contract Address:** CBX74DY3MEWPQEOWERWMTN7WOLA3YC7HQLA7IT64R7K5YCBKIJHBM2VW
+- **Contract Address:** CB6X2N33IW2JJQWBNKL3CWKCPCS7CCBHSDDQPIKEO2F7LRG6BFTWWOSB
 - **Network:** Stellar Testnet
 - **Live Demo:** https://insurance-claims-syste.vercel.app
 
