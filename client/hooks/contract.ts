@@ -26,7 +26,7 @@ import {
 
 /** Your deployed Soroban contract ID */
 export const CONTRACT_ADDRESS =
-  "CBX74DY3MEWPQEOWERWMTN7WOLA3YC7HQLA7IT64R7K5YCBKIJHBM2VW";
+  "CB6X2N33IW2JJQWBNKL3CWKCPCS7CCBHSDDQPIKEO2F7LRG6BFTWWOSB";
 
 /** Network passphrase (testnet by default) */
 export const NETWORK_PASSPHRASE = Networks.TESTNET;
