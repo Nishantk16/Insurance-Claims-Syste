@@ -428,17 +428,20 @@ export default function ContractUI({ walletAddress, onConnect, isConnecting }: C
     setIsLoadingMyClaims(true);
     setMyClaims([]);
     try {
-      const claims: { id: number; data: ClaimData }[] = [];
-      const maxClaims = parseInt(searchMyClaims) || 20;
-      for (let i = 1; i <= Math.min(maxClaims, 100); i++) {
-        try {
-          const result = await getClaim(BigInt(i));
-          if (result && typeof result === "object") {
-            claims.push({ id: i, data: result as ClaimData });
-          }
-        } catch { }
-      }
-      setMyClaims(claims);
+      const maxClaims = Math.min(parseInt(searchMyClaims) || 20, 100);
+      const ids = Array.from({ length: maxClaims }, (_, i) => i + 1);
+      const results = await Promise.all(
+        ids.map(async (i) => {
+          try {
+            const result = await getClaim(BigInt(i));
+            if (result && typeof result === "object") {
+              return { id: i, data: result as ClaimData };
+            }
+          } catch { }
+          return null;
+        })
+      );
+      setMyClaims(results.filter((c): c is { id: number; data: ClaimData } => c !== null));
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Failed to load claims");
     } finally {
