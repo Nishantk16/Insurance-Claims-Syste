@@ -44,6 +44,9 @@ function getFriendlyError(err: unknown): string {
   if (raw.includes("claim not under review")) {
     return "This claim is not under review right now.";
   }
+  if (raw.includes("minimum 3 votes required")) {
+        return "At least 3 votes are needed before this claim can be resolved.";
+      }
   if (raw.includes("claim not found")) {
     return "Claim not found. Please check the Claim ID.";
   }
