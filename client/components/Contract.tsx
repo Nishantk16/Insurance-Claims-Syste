@@ -194,6 +194,16 @@ function ClaimCard({ claim, claimId, onVote, onStartVoting, onResolve, walletAdd
     const text = `Claim #${claimId}\nStatus: ${claim.status[0]}\nDescription: ${claim.description}\nClaimant: ${claim.claimant}\nCoverage: ${formatAmount(claim.coverage_amount)} XLM\nApprovals: ${claim.approvals} | Rejections: ${claim.rejections}`;
     navigator.clipboard.writeText(text);
   };
+  const handleDownload = () => {
+    const text = `Claim #${claimId}\nStatus: ${claim.status[0]}\nDescription: ${claim.description}\nClaimant: ${claim.claimant}\nCoverage: ${formatAmount(claim.coverage_amount)} XLM\nApprovals: ${claim.approvals} | Rejections: ${claim.rejections}\nEvidence: ${claim.evidence.join(", ") || "None"}`;
+    const blob = new Blob([text], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `claim-${claimId}-history.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
 
   return (
     <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] overflow-hidden animate-fade-in-up">
@@ -205,6 +215,9 @@ function ClaimCard({ claim, claimId, onVote, onStartVoting, onResolve, walletAdd
         <button onClick={handleCopyDetails} title="Copy claim details" className="text-white/25 hover:text-white/60 transition-colors">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
           </button>
+        <button onClick={handleDownload} title="Download claim history" className="text-white/25 hover:text-white/60 transition-colors">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </button>
         <Badge variant={statusCfg.variant}>
           <span className={cn("h-1.5 w-1.5 rounded-full", statusCfg.dot)} />
           {claim.status[0]}
