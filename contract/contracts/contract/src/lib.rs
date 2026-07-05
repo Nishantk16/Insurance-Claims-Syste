@@ -142,6 +142,7 @@ impl Contract {
             .persistent()
             .get(&DataKey::Claim(claim_id))
             .expect("claim not found");
+        assert_ne!(claim.claimant, voter, "claimant cannot vote on their own claim");
 
         assert_eq!(
             claim.status,
