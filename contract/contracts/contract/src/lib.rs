@@ -185,6 +185,10 @@ impl Contract {
             ClaimStatus::UnderReview,
             "claim not under review"
         );
+        assert!(
+            claim.approvals + claim.rejections >= 3,
+            "minimum 3 votes required to resolve this claim"
+        );
 
         claim.status = if claim.approvals > claim.rejections {
             ClaimStatus::Approved
