@@ -160,42 +160,47 @@ We are onboarding testnet users to improve ClaimChain!
 
 ## 🧑‍🤝‍🧑 Users Onboarded
 
-We onboarded 10 testnet users who actively used ClaimChain's core flows (file claim, browse claims, vote, submit evidence, resolve claim) and submitted feedback.
+We onboarded 10 testnet users who actively used ClaimChain's core flows (file claim, browse claims, vote, submit evidence, resolve claim) and submitted feedback via our [feedback form](https://docs.google.com/forms/d/e/1FAIpQLSc3kZlOxoRcCHYj-njzyPynmGXaL3dFjX2ytfSwXKXQkngW1w/viewform?usp=publish-editor). Full responses: [Google Sheet](https://docs.google.com/spreadsheets/d/1WO_F7pDY_UZPfbAEH0i_oZIz64cJEeKh-1x-n3-AvEg/edit?usp=drivesdk).
 
-| # | Name | Email | Wallet Address | Feedback Given |
-|---|------|-------|-----------------|-----------------|
-| 1 | Mandavi Kumari | mandavikumari185@gmail.com | GBQ54XUHUOO3ZD27ZHCONISXC3N2O5MAALJCMEI63FDJBGIZZDRYVVD7 | Yes |
-| 2 | Ayush Rai | raiiayush007@gmail.com | GCY4G2WFUANO2VIRXTUPEWJUO55PNK54XSDKOJHLGTC6S7AJ2YXK4HEZ | Yes |
-| 3 | Roshan Gupta | 2005guptaroshan@gmail.com | GCWYDBWDWA2GZMWVBHDDQW27XXQNF5BEYBLPJ6IQSFLR474FRFXWTH3U | Yes |
-| 4 | Md Sadique | sadiqueara51@gmail.com | GDBJYZDB6YP6YE6G7DHWFJ4DPXJGCJAJJNFF5DCG3LWUZVYU7T42IWQJ | Yes |
-| 5 | Md Sadique | sadiqueara51@gmail.com | GBLIIZTSQVGHMU64U3JZHKAZ7DR26SVLHQJ5GR6DI435IHTOR23KVJBG | Yes |
-| 6 | Ansh Barnwal | anshbarnwal0712@gmail.com | GDBJNIQL4BEEGGFVZ2S5PNCA5K5SDNJ4MAAES2RSNIB5PK6ZUPVAS6CJ | Yes |
-| 7 | Yash Keshri | keshriiyashh31@gmail.com | GAKBXA6UG52M7W55Z2ZLLAQRTLL6NL5BU4NRN2CQRIW3MAUGOV5Z6H6J | Yes |
-| 8 | Keshav Kumar | thakurkeshav3210@gmail.com | GDRDS625DDZAGSIMNV6SYA5FDWAWHYJMHWUVTBYE4UB2UPPT22RWR463 | Yes |
-| 9 | Nikhil Raj | nikhil595bro@gmail.com | GDC24A3YLRHHWI3TJOA4U32OWMDYXRWODOVXSRQT4KEVEESG7VDUTY7H | Yes |
-| 10 | Pushkar Srivastava | pushkarsri0902@gmail.com | GBYVDOKQTTOYT7Q4Z4XSSE5ZUOPNQJYMJL2NBY5MHLWA6SVVOASIBAVV | Yes |
+| User ID | Name | Email | Wallet Address | Feedback Summary |
+|---|------|-------|-----------------|--------------------|
+| 1 | Mandavi Kumari | mandavikumari185@gmail.com | GBQ54XUHUOO3ZD27ZHCONISXC3N2O5MAALJCMEI63FDJBGIZZDRYVVD7 | No suggestions |
+| 2 | Ayush Rai | raiiayush007@gmail.com | GCY4G2WFUANO2VIRXTUPEWJUO55PNK54XSDKOJHLGTC6S7AJ2YXK4HEZ | Include real-time claim status updates with notifications |
+| 3 | Roshan Gupta | 2005guptaroshan@gmail.com | GCWYDBWDWA2GZMWVBHDDQW27XXQNF5BEYBLPJ6IQSFLR474FRFXWTH3U | Buttons are small |
+| 4 | Md Sadique | sadiqueara51@gmail.com | GDBJYZDB6YP6YE6G7DHWFJ4DPXJGCJAJJNFF5DCG3LWUZVYU7T42IWQJ | Loading takes time |
+| 5 | Md Sadique | sadiqueara51@gmail.com | GBLIIZTSQVGHMU64U3JZHKAZ7DR26SVLHQJ5GR6DI435IHTOR23KVJBG | Loading takes time |
+| 6 | Ansh Barnwal | anshbarnwal0712@gmail.com | GDBJNIQL4BEEGGFVZ2S5PNCA5K5SDNJ4MAAES2RSNIB5PK6ZUPVAS6CJ | Claim history should be downloadable |
+| 7 | Yash Keshri | keshriiyashh31@gmail.com | GAKBXA6UG52M7W55Z2ZLLAQRTLL6NL5BU4NRN2CQRIW3MAUGOV5Z6H6J | Wallet connection needs guidance |
+| 8 | Keshav Kumar | thakurkeshav3210@gmail.com | GDRDS625DDZAGSIMNV6SYA5FDWAWHYJMHWUVTBYE4UB2UPPT22RWR463 | Claim approval process should prevent users from approving their own claims |
+| 9 | Nikhil Raj | nikhil595bro@gmail.com | GDC24A3YLRHHWI3TJOA4U32OWMDYXRWODOVXSRQT4KEVEESG7VDUTY7H | Error messages are too technical and difficult to understand |
+| 10 | Pushkar Srivastava | pushkarsri0902@gmail.com | GBYVDOKQTTOYT7Q4Z4XSSE5ZUOPNQJYMJL2NBY5MHLWA6SVVOASIBAVV | Claims should require multiple votes before being approved or rejected |
 
 ## 🔧 Feedback Implementation
 
-| # | Feedback (from user) | Submitted By | Status | Implementation Notes |
-|---|------------------------|---------------|--------|------------------------|
-| 1 | Include real-time claim status updates with notifications | Ayush Rai | ✅ Done | Implemented via `react-hot-toast` with 15-second polling |
-| 2 | Buttons are small | Roshan Gupta | ✅ Done | Increased button size/padding for better usability |
-| 3 | Loading takes time | Md Sadique | ✅ Done | Optimized data fetching using `Promise.all` for parallel loading |
-| 4 | Claim history should be downloadable | Ansh Barnwal | ✅ Done | Added downloadable claim history feature |
-| 5 | Wallet connection needs guidance | Yash Keshri | ✅ Done | Added on-screen wallet connection guidance/instructions |
-| 6 | Claim approval process should prevent users from approving their own claims | Keshav Kumar | ✅ Done | Added self-vote check to prevent voting on own claims |
-| 7 | Error messages are too technical and difficult to understand | Nikhil Raj | ✅ Done | Simplified error messages for end users |
-| 8 | Claims should require multiple votes before being approved or rejected | Pushkar Srivastava | ✅ Done | Implemented 3-vote quorum requirement |
-| 9 | No suggestions | Mandavi Kumari | — | No action needed |
+| User ID | Name | Email | Wallet Address | Feedback Summary | Improvement Made | Git Commit ID |
+|---|------|-------|-----------------|--------------------|---------------------|------------------|
+| 2 | Ayush Rai | raiiayush007@gmail.com | GCY4G2WFUANO2VIRXTUPEWJUO55PNK54XSDKOJHLGTC6S7AJ2YXK4HEZ | Include real-time claim status updates with notifications | Added real-time claim status notifications using `react-hot-toast` with 15-second polling | [`5833c22`](https://github.com/Nishantk16/Insurance-Claims-Syste/commit/5833c22) |
+| 3 | Roshan Gupta | 2005guptaroshan@gmail.com | GCWYDBWDWA2GZMWVBHDDQW27XXQNF5BEYBLPJ6IQSFLR474FRFXWTH3U | Buttons are small | Increased button size for better usability | [`9f8dd03`](https://github.com/Nishantk16/Insurance-Claims-Syste/commit/9f8dd03) |
+| 4 | Md Sadique | sadiqueara51@gmail.com | GDBJYZDB6YP6YE6G7DHWFJ4DPXJGCJAJJNFF5DCG3LWUZVYU7T42IWQJ | Loading takes time | Parallelized claim fetching using `Promise.all` to speed up loading | [`9c3ce49`](https://github.com/Nishantk16/Insurance-Claims-Syste/commit/9c3ce49) |
+| 6 | Ansh Barnwal | anshbarnwal0712@gmail.com | GDBJNIQL4BEEGGFVZ2S5PNCA5K5SDNJ4MAAES2RSNIB5PK6ZUPVAS6CJ | Claim history should be downloadable | Added downloadable claim history feature | [`7f61f3c`](https://github.com/Nishantk16/Insurance-Claims-Syste/commit/7f61f3c) |
+| 7 | Yash Keshri | keshriiyashh31@gmail.com | GAKBXA6UG52M7W55Z2ZLLAQRTLL6NL5BU4NRN2CQRIW3MAUGOV5Z6H6J | Wallet connection needs guidance | Added step-by-step wallet onboarding guide with testnet faucet link | [`c7ef65f`](https://github.com/Nishantk16/Insurance-Claims-Syste/commit/c7ef65f) |
+| 8 | Keshav Kumar | thakurkeshav3210@gmail.com | GDRDS625DDZAGSIMNV6SYA5FDWAWHYJMHWUVTBYE4UB2UPPT22RWR463 | Claim approval process should prevent users from approving their own claims | Added self-vote check to prevent claimants from voting on their own claims | [`2724d2e`](https://github.com/Nishantk16/Insurance-Claims-Syste/commit/2724d2e) |
+| 9 | Nikhil Raj | nikhil595bro@gmail.com | GDC24A3YLRHHWI3TJOA4U32OWMDYXRWODOVXSRQT4KEVEESG7VDUTY7H | Error messages are too technical and difficult to understand | Added user-friendly, simplified error messages | [`0b47a5c`](https://github.com/Nishantk16/Insurance-Claims-Syste/commit/0b47a5c) |
+| 10 | Pushkar Srivastava | pushkarsri0902@gmail.com | GBYVDOKQTTOYT7Q4Z4XSSE5ZUOPNQJYMJL2NBY5MHLWA6SVVOASIBAVV | Claims should require multiple votes before being approved or rejected | Implemented minimum 3-vote quorum requirement before a claim can be resolved | [`605cf34`](https://github.com/Nishantk16/Insurance-Claims-Syste/commit/605cf34) |
+| 1 | Mandavi Kumari | mandavikumari185@gmail.com | GBQ54XUHUOO3ZD27ZHCONISXC3N2O5MAALJCMEI63FDJBGIZZDRYVVD7 | No suggestions | N/A | — |
 
 ## 📈 Improvement Summary
 
-Based on direct feedback from 10 onboarded testnet users, ClaimChain went through a focused round of improvements:
+Based on direct feedback from 10 onboarded testnet users, ClaimChain went through a focused round of improvements, each traceable to a specific Git commit:
 
-- **Trust & Fairness:** Added a self-vote check and a 3-vote quorum requirement so no single user can approve their own claim or push through a decision alone.
-- **Usability:** Increased button sizes, simplified technical error messages, and added wallet connection guidance to make the app easier to use for first-time testers.
-- **Performance:** Sped up data loading using `Promise.all` for parallel API calls, reducing wait times across the app.
-- **Transparency:** Added real-time claim status notifications (via `react-hot-toast` with 15-second polling) and a downloadable claim history feature, giving users better visibility into their claims.
+- **Trust & Fairness:** Added a self-vote check ([`2724d2e`](https://github.com/Nishantk16/Insurance-Claims-Syste/commit/2724d2e)) and a minimum 3-vote quorum requirement ([`605cf34`](https://github.com/Nishantk16/Insurance-Claims-Syste/commit/605cf34)) so no single user can approve their own claim or push through a decision alone.
+- **Usability:** Increased button sizes ([`9f8dd03`](https://github.com/Nishantk16/Insurance-Claims-Syste/commit/9f8dd03)), added user-friendly error messages ([`0b47a5c`](https://github.com/Nishantk16/Insurance-Claims-Syste/commit/0b47a5c)), and added a step-by-step wallet onboarding guide with testnet faucet link ([`c7ef65f`](https://github.com/Nishantk16/Insurance-Claims-Syste/commit/c7ef65f)).
+- **Performance:** Sped up data loading by parallelizing claim fetching with `Promise.all` ([`9c3ce49`](https://github.com/Nishantk16/Insurance-Claims-Syste/commit/9c3ce49)), reducing wait times across the app.
+- **Transparency:** Added real-time claim status notifications via `react-hot-toast` with 15-second polling ([`5833c22`](https://github.com/Nishantk16/Insurance-Claims-Syste/commit/5833c22)) and a downloadable claim history feature ([`7f61f3c`](https://github.com/Nishantk16/Insurance-Claims-Syste/commit/7f61f3c)).
 
 All 8 actionable feedback items from testers have been implemented and deployed to the live app.
+
+## 📊 Monitoring & Analytics
+Vercel Web Analytics and Speed Insights are enabled for the live deployment to monitor real user traffic and performance:
+- Live Demo: https://insurance-claims-syste.vercel.app
+- Analytics tracked via Vercel Web Analytics (Hobby plan)
