@@ -106,6 +106,7 @@ fn test_resolve_claim_approved() {
     let claimant = Address::generate(&env);
     let voter1 = Address::generate(&env);
     let voter2 = Address::generate(&env);
+    let voter3 = Address::generate(&env);
 
     client.file_claim(
         &claimant,
@@ -116,6 +117,7 @@ fn test_resolve_claim_approved() {
     client.start_voting(&voter1, &1);
     client.vote(&voter1, &1, &true);
     client.vote(&voter2, &1, &true);
+    client.vote(&voter3, &1, &true);
 
     // Anyone can resolve
     client.resolve_claim(&voter1, &1);
@@ -134,6 +136,7 @@ fn test_resolve_claim_rejected() {
     let claimant = Address::generate(&env);
     let voter1 = Address::generate(&env);
     let voter2 = Address::generate(&env);
+    let voter3 = Address::generate(&env);
 
     client.file_claim(
         &claimant,
@@ -144,6 +147,7 @@ fn test_resolve_claim_rejected() {
     client.start_voting(&voter1, &1);
     client.vote(&voter1, &1, &false);
     client.vote(&voter2, &1, &false);
+    client.vote(&voter3, &1, &false);
 
     client.resolve_claim(&voter1, &1);
 
