@@ -51,6 +51,8 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
@@ -59,17 +61,28 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '20'
+      - name: Check if contract changed
+        id: contract_changed
+        run: |
+          if git diff --quiet HEAD^ HEAD -- contract/ 2>/dev/null; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
       - name: Install Stellar CLI
+        if: steps.contract_changed.outputs.changed == 'true'
         run: |
           sudo apt-get update
           sudo apt-get install -y libdbus-1-dev pkg-config libudev-dev
           cargo install --locked stellar-cli
       - name: Build Contract
+        if: steps.contract_changed.outputs.changed == 'true'
         working-directory: ./contract
         run: |
           rustup target add wasm32v1-none
           stellar contract build
       - name: Configure Stellar Network
+        if: steps.contract_changed.outputs.changed == 'true'
         run: |
           stellar network add testnet \
             --rpc-url https://soroban-testnet.stellar.org \
@@ -78,6 +91,7 @@ jobs:
           echo "Waiting for account to be available..."
           sleep 15
       - name: Deploy Contract to Testnet
+        if: steps.contract_changed.outputs.changed == 'true'
         working-directory: ./contract
         run: |
           stellar contract deploy \
