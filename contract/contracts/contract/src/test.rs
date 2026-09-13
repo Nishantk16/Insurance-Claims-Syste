@@ -119,6 +119,7 @@ fn test_resolve_claim_approved() {
     client.vote(&voter2, &1, &true);
     client.vote(&voter3, &1, &true);
 
+    
     // Anyone can resolve
     client.resolve_claim(&voter1, &1);
 
